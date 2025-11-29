@@ -107,7 +107,7 @@ jobs:
 
       - name: Tag image
         run: |
-          docker image tag image ${{ env.APP_IMAGE_REPO }}:$VERSION
+          docker image tag image ${{ env.IMAGE_NAME }}:$VERSION
 
       - name: Log into GHCR
         if: steps.changed-files.outputs.any_changed == 'true'
@@ -122,4 +122,4 @@ jobs:
 
       - name: Publish
         run: |
-          docker push ${{ env.APP_IMAGE_REPO }}:$VERSION
+          docker push ${{ env.IMAGE_NAME }}:$VERSION
