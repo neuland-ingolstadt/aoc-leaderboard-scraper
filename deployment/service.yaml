@@ -5,7 +5,7 @@ metadata:
   labels:
     app: aoc-leaderboard-scraper
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: aoc-leaderboard-scraper
   ports:
