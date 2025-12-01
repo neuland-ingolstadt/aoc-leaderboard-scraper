@@ -110,7 +110,14 @@ func getLeaderboard(eventYear, leaderboardId, viewKey string) (*types.Leaderboar
 
 	leaderboardInformation := new(types.LeaderboardInformation)
 
-	res, err := http.Get(boardURL)
+	req, err := http.NewRequest(http.MethodGet, boardURL, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Set("User-Agent", "Neuland Ingolstadt e.V. - info@neuland-ingolstadt.de")
+
+	res, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return nil, err
 	}
